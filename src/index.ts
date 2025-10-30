@@ -56,45 +56,7 @@ function setHeadinOrder(html: string): string {
             matches: (_el, $el) =>
                 $el.is('link[rel="preconnect"], link[rel="dns-prefetch"]'),
         },
-        // 8) ИНЛАЙН СТИЛИ (критичные стили раньше всего из блока стилей/скриптов)
-        {
-            name: 'style',
-            matches: (_el, $el) => $el.is('style'),
-        },
-        // 9) PRELOAD СТИЛЕЙ
-        {
-            name: 'link-preload-style',
-            matches: (_el, $el) => $el.is('link[rel="preload"][as="style"]'),
-        },
-        // 10) PRELOAD СКРИПТОВ (modulepreload или preload as=script)
-        {
-            name: 'link-preload-script',
-            matches: (_el, $el) =>
-                $el.is(
-                    'link[rel="modulepreload"], link[rel="preload"][as="script"]'
-                ),
-        },
-        // 11) ПРОЧИЕ PRELOAD (шрифты/изображения/etc.)
-        {
-            name: 'link-preload-other',
-            matches: (_el, $el) =>
-                $el.is(
-                    'link[rel="preload"]:not([as="style"]):not([as="script"])'
-                ),
-        },
-        // 12) ЗАГРУЗКА СТИЛЕЙ
-        {
-            name: 'link-stylesheet',
-            matches: (_el, $el) => $el.is('link[rel="stylesheet"]'),
-        },
-        // 13) ЗАГРУЗКА СКРИПТОВ — обычные (plain) без async/defer/module
-        {
-            name: 'script-src-plain',
-            matches: (_el, $el) =>
-                $el.is(
-                    'script[src]:not([async]):not([defer]):not([type="module"])'
-                ),
-        },
+        // 8) ИНЛАЙН СКРИПТЫ (до инлайн-стилей и любых preload)
         {
             name: 'script-inline-plain',
             matches: (_el, $el) =>
@@ -102,7 +64,46 @@ function setHeadinOrder(html: string): string {
                     'script:not([src]):not([async]):not([defer]):not([type="module"]):not([type="importmap"])'
                 ),
         },
-        // 14) ЗАГРУЗКА СКРИПТОВ — async/module
+        // 9) ИНЛАЙН СТИЛИ
+        {
+            name: 'style',
+            matches: (_el, $el) => $el.is('style'),
+        },
+        // 10) PRELOAD СТИЛЕЙ
+        {
+            name: 'link-preload-style',
+            matches: (_el, $el) => $el.is('link[rel="preload"][as="style"]'),
+        },
+        // 11) PRELOAD СКРИПТОВ (modulepreload или preload as=script)
+        {
+            name: 'link-preload-script',
+            matches: (_el, $el) =>
+                $el.is(
+                    'link[rel="modulepreload"], link[rel="preload"][as="script"]'
+                ),
+        },
+        // 12) ПРОЧИЕ PRELOAD (шрифты/изображения/etc.)
+        {
+            name: 'link-preload-other',
+            matches: (_el, $el) =>
+                $el.is(
+                    'link[rel="preload"]:not([as="style"]):not([as="script"])'
+                ),
+        },
+        // 13) ЗАГРУЗКА СТИЛЕЙ
+        {
+            name: 'link-stylesheet',
+            matches: (_el, $el) => $el.is('link[rel="stylesheet"]'),
+        },
+        // 14) ЗАГРУЗКА СКРИПТОВ — обычные (plain) без async/defer/module
+        {
+            name: 'script-src-plain',
+            matches: (_el, $el) =>
+                $el.is(
+                    'script[src]:not([async]):not([defer]):not([type="module"])'
+                ),
+        },
+        // 15) ЗАГРУЗКА СКРИПТОВ — async/module
         {
             name: 'script-async-or-module',
             matches: (_el, $el) =>
@@ -110,7 +111,7 @@ function setHeadinOrder(html: string): string {
                     'script[async], script[type="module"][src], script[type="module"]'
                 ),
         },
-        // 15) ЗАГРУЗКА СКРИПТОВ — defer
+        // 16) ЗАГРУЗКА СКРИПТОВ — defer
         {
             name: 'script-defer',
             matches: (_el, $el) => $el.is('script[defer]'),
