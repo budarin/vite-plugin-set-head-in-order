@@ -1,6 +1,6 @@
 {
     "name": "@budarin/vite-plugin-set-head-in-order",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Vite plugin to set elements in head in right order",
     "keywords": [
         "vite",
