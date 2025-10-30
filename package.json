@@ -20,12 +20,11 @@
         "vite": ">=5.0.0"
     },
     "devDependencies": {
-        "@types/node": "^24.8.1",
+        "@types/node": "^24.9.2",
         "prettier": "^3.6.2",
         "typescript": "^5.9.3",
-        "vite": "^7.1.10"
+        "vite": "^7.1.12"
     },
-
     "dependencies": {
         "cheerio": "^1.1.2"
     },
