@@ -1,6 +1,6 @@
 ## vite-plugin-set-head-in-order
 
-Плагин Vite, который упорядочивает элементы внутри `<head>` по правилам capo.js, сохраняя порядок элементов внутри каждой группы и нормализуя пробелы.
+Плагин Vite, который упорядочивает элементы внутри `<head>` по правилам capo.js, сохраняя порядок элементов внутри каждой группы.
 
 ### Почему
 
@@ -26,10 +26,10 @@ yarn add -D @budarin/vite-plugin-set-head-in-order
 ```ts
 // vite.config.ts
 import { defineConfig } from 'vite';
-import setHeadinOrderPlugin from '@budarin/vite-plugin-set-head-in-order';
+import setHeadInOrderPlugin from '@budarin/vite-plugin-set-head-in-order';
 
 export default defineConfig({
-    plugins: [setHeadinOrderPlugin()],
+    plugins: [setHeadInOrderPlugin()],
 });
 ```
 

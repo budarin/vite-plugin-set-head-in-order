@@ -173,7 +173,7 @@ function setHeadinOrder(html: string): string {
     return $.html();
 }
 
-export function setHeadinOrderPlugin(): Plugin {
+export function setHeadInOrderPlugin(): Plugin {
     return {
         name: 'vite-plugin-set-head-in-order',
         apply: 'build',
@@ -184,4 +184,4 @@ export function setHeadinOrderPlugin(): Plugin {
     };
 }
 
-export default setHeadinOrderPlugin;
+export default setHeadInOrderPlugin;
