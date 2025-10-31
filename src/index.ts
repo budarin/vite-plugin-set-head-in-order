@@ -4,6 +4,7 @@ import * as cheerio from 'cheerio';
 function setHeadinOrder(html: string): string {
     const $ = cheerio.load(html);
     const $head = $('head');
+
     if ($head.length === 0) return html;
 
     // Удаляем пробельные текстовые узлы в <head>
@@ -148,8 +149,7 @@ function setHeadinOrder(html: string): string {
     );
     $head.contents().each((_, node) => {
         if (node.type === 'comment') {
-            // Комментарии оставляем, но если они окружены пробелами - уже очищено выше
-            buckets[OTHER_GROUP_INDEX].push(node as any);
+            $(node).remove();
             return;
         }
         if (
@@ -163,8 +163,8 @@ function setHeadinOrder(html: string): string {
         // Прочие типы (должны быть удалены ранее)
     });
 
-    // Пересобираем <head>: группы по порядку, элементы внутри — как были
     $head.empty();
+
     for (let i = 0; i < buckets.length; i++) {
         for (const node of buckets[i]) {
             $head.append(node);
