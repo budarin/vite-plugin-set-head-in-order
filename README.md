@@ -53,9 +53,9 @@ export default defineConfig({
 5. Блок стилей и скриптов в таком порядке:
     - Сначала инлайн‑скрипты (обычные, без async/defer/module).
     - Затем инлайн‑стили (`<style>`).
-    - Затем прелоад стилей (link rel="preload" as="style").
+    - прелоад стилей (link rel="preload" as="style")
+    - загрузка обычных таблиц стилей (link rel="stylesheet").
     - Затем прелоад скриптов (link rel="modulepreload" и preload as="script").
-    - Затем загрузка обычных таблиц стилей (link rel="stylesheet").
     - Затем загрузка скриптов: сначала обычные внешние (plain src), потом async/ES‑модули, затем defer.
 6. Прочие прелоады ресурсов (шрифты, изображения и т.п.).
 7. Остальное: прочие мета‑теги, иконки/манифест/предвыборка (prefetch, prerender).

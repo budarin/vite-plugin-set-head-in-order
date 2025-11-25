@@ -75,7 +75,12 @@ function setHeadinOrder(html: string): string {
             name: 'link-preload-style',
             matches: (_el, $el) => $el.is('link[rel="preload"][as="style"]'),
         },
-        // 11) PRELOAD СКРИПТОВ (modulepreload или preload as=script)
+        // 11) ЗАГРУЗКА СТИЛЕЙ
+        {
+            name: 'link-stylesheet',
+            matches: (_el, $el) => $el.is('link[rel="stylesheet"]'),
+        },
+        // 12) PRELOAD СКРИПТОВ (modulepreload или preload as=script)
         {
             name: 'link-preload-script',
             matches: (_el, $el) =>
@@ -83,18 +88,13 @@ function setHeadinOrder(html: string): string {
                     'link[rel="modulepreload"], link[rel="preload"][as="script"]'
                 ),
         },
-        // 12) ПРОЧИЕ PRELOAD (шрифты/изображения/etc.)
+        // 13) ПРОЧИЕ PRELOAD (шрифты/изображения/etc.)
         {
             name: 'link-preload-other',
             matches: (_el, $el) =>
                 $el.is(
                     'link[rel="preload"]:not([as="style"]):not([as="script"])'
                 ),
-        },
-        // 13) ЗАГРУЗКА СТИЛЕЙ
-        {
-            name: 'link-stylesheet',
-            matches: (_el, $el) => $el.is('link[rel="stylesheet"]'),
         },
         // 14) ЗАГРУЗКА СКРИПТОВ — обычные (plain) без async/defer/module
         {
